@@ -22,20 +22,20 @@
     var CONFIG = {"hostname":"coderhaoranlee.github.io","root":"/","scheme":"Muse","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}}};
   </script>
 
-  <meta name="description" content="拖延了好多年，终于还是下定决心搞起Blog来！">
+  <meta name="description" content="朋友，你是否也困扰ROS中不能使用Python3.x的强大功能，你是否看到很多神奇的python，但是只支持python3.x而不能用于ROS而咬牙切齿。走过路过，不要错过，这篇文章正适合你…">
 <meta property="og:type" content="article">
-<meta property="og:title" content="写在前面">
-<meta property="og:url" content="https://coderhaoranlee.github.io/2020/07/05/before-write/index.html">
+<meta property="og:title" content="ROS使用Python3以及Ray RLlib训练框架注意事项">
+<meta property="og:url" content="https://coderhaoranlee.github.io/2020/09/16/ros-ray-post/index.html">
 <meta property="og:site_name" content="这是个敷衍的标题">
-<meta property="og:description" content="拖延了好多年，终于还是下定决心搞起Blog来！">
+<meta property="og:description" content="朋友，你是否也困扰ROS中不能使用Python3.x的强大功能，你是否看到很多神奇的python，但是只支持python3.x而不能用于ROS而咬牙切齿。走过路过，不要错过，这篇文章正适合你…">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-05T06:30:26.000Z">
-<meta property="article:modified_time" content="2020-07-05T06:36:51.011Z">
+<meta property="article:published_time" content="2020-09-16T12:35:47.000Z">
+<meta property="article:modified_time" content="2020-09-17T02:40:50.916Z">
 <meta property="article:author" content="HR Lee">
-<meta property="article:tag" content="随笔">
+<meta property="article:tag" content="环境配置">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://coderhaoranlee.github.io/2020/07/05/before-write/">
+<link rel="canonical" href="https://coderhaoranlee.github.io/2020/09/16/ros-ray-post/">
 
 
 <script class="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>写在前面 | 这是个敷衍的标题</title>
+  <title>ROS使用Python3以及Ray RLlib训练框架注意事项 | 这是个敷衍的标题</title>
   
 
 
@@ -286,7 +286,7 @@ mjx-container[display="true"] + br {
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -298,6 +298,7 @@ mjx-container[display="true"] + br {
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ROS中使用Python3的一种解决方案"><span class="nav-number">1.</span> <span class="nav-text">ROS中使用Python3的一种解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ray-RLlib中使用ROS封装gym环境注意事项"><span class="nav-number">2.</span> <span class="nav-text">Ray RLlib中使用ROS封装gym环境注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -361,7 +362,7 @@ mjx-container[display="true"] + br {
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://coderhaoranlee.github.io/2020/07/05/before-write/">
+    <link itemprop="mainEntityOfPage" href="https://coderhaoranlee.github.io/2020/09/16/ros-ray-post/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -374,7 +375,7 @@ mjx-container[display="true"] + br {
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          写在前面
+          ROS使用Python3以及Ray RLlib训练框架注意事项
         </h1>
 
         <div class="post-meta">
@@ -383,10 +384,16 @@ mjx-container[display="true"] + br {
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-07-05 14:30:26 / 修改时间：14:36:51" itemprop="dateCreated datePublished" datetime="2020-07-05T14:30:26+08:00">2020-07-05</time>
+              <time title="创建时间：2020-09-16 20:35:47" itemprop="dateCreated datePublished" datetime="2020-09-16T20:35:47+08:00">2020-09-16</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-09-17 10:40:50" itemprop="dateModified" datetime="2020-09-17T10:40:50+08:00">2020-09-17</time>
+              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -406,11 +413,34 @@ mjx-container[display="true"] + br {
     <div class="post-body" itemprop="articleBody">
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>拖延了好多年，终于还是下定决心搞起Blog来！</p>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>朋友，你是否也困扰ROS中不能使用Python3.x的强大功能，你是否看到很多神奇的python，但是只支持python3.x而不能用于ROS而咬牙切齿。走过路过，不要错过，这篇文章正适合你…</p>
 <a id="more"></a>
-<p>当然，最最最主要的原因还是发现了一个很容易上手部署的<a href="https://sspai.com/post/59337" target="_blank" rel="noopener">教程</a>，哈哈哈哈啊哈哈。。。</p>
-<p>曾经不止一次尝试过，成功过也失败过，但过程太复杂，感觉不是长久之计。当然，主要原因还是太懒...</p>
-<p>这次，终于鼓起勇气，下定决心，干！！！</p>
+
+<h2 id="ROS中使用Python3的一种解决方案"><a href="#ROS中使用Python3的一种解决方案" class="headerlink" title="ROS中使用Python3的一种解决方案"></a>ROS中使用Python3的一种解决方案</h2><p>在机器人操作系统ROS中默认的是Python2.7版本，而目前很多优秀的开源代码很多只支持Python3.x版本。为了使这些代码库能够在ROS（1）中使用，需要进行一定的修改。这里的修改有两种思路，一种是修改开源库，使其兼容python2.7版本。如果你对这个库足够熟悉，并且代码规模比较小时，比较建议这种方式。但是更多情况是，我们可能无法完全掌握代码库中的所有细节，并且代码库的体积非常庞大，例如Ray。这时，需要让ROS兼容Python3.x。</p>
+<p>ROS兼容Python3.x的方法通常有两种，一种是使用python3.x对ROS进行源码编译并安装，这种方式相对麻烦一些，并且搞完之后ROS下不能使用Python2.7，这种方法本文并没有尝试。本文尝试的是另一种方法。</p>
+<p>在正常安装完ROS不做任何改动的想情况下，在Python3.x中执行 <code>import rospy</code> 时会报错，会提示 <code>ros_pkg</code>找不到。<br>这时需要安装一些库（例如，catkin_pkg），但是切记，不要在系统默认的python3.x路径中安装，更不要使用<code>sudo apt install ros-xxx-catkin-pkg</code>这种安装方式，它会自动删除掉很多东西。</p>
+<p>这时需要使用virtualenv建立一个虚拟隔离环境（如果没有安装过，可以使用<code>pip install virtualenv</code>命令安装）。<br>然后使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">virtualenv -p python3 ros_python3</span><br></pre></td></tr></table></figure>
+
+<p>在<code>$HOME</code>路径下建立了一个名为<code>ros_python3</code>的虚拟环境，使用<code>source ~/ros_python3/bin/active</code>命令激活该环境。<br>此时，安装依赖库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install catkin_pkg pyyaml empty rospkg numpy</span><br></pre></td></tr></table></figure>
+
+<p>这时候在<code>import rospy</code>应该不会报错了，但是在<code>import tf</code>或者 geometry_msgs相关的库时会报错，这里需要重新编译一下geometry2库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p catkin_ws&#x2F;src</span><br><span class="line">cd catkin_ws&#x2F;src</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;ros&#x2F;geometry2</span><br><span class="line">cd ..</span><br><span class="line">catkin_make</span><br><span class="line">source devel&#x2F;setup.bash</span><br></pre></td></tr></table></figure>
+
+<p>在编译的过程中，要从输出的CMake配置中看一下使用的python是2还是3，如果是2，需要在执行catkin_maked的时候进行一些修改。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">catkin_make --cmake-args -DPYTHON_EXECUTABLE&#x3D;&#x2F;usr&#x2F;bin&#x2F;python3 \</span><br><span class="line">-DPYTHON_INCLUDE_DIR&#x3D;&#x2F;usr&#x2F;include&#x2F;python3.6m \</span><br><span class="line">-DPYTHON_LIBRARY&#x3D;&#x2F;usr&#x2F;lib&#x2F;x86_64-linux-gnu&#x2F;libpython3.6m.so</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以在python3中开心地<code>import rospy</code> 和<code>import tf</code>了。<br>但是这里需要注意的是，由于这次并没有使用到<code>cv_brige</code>相关的东西，所以不确定python2与3之间它们是否兼容。<br>如果后需使用的这个出现问题，可以参考<a href="https://www.jianshu.com/p/2f86607c98d1" target="_blank" rel="noopener">这里</a>。</p>
+<h2 id="Ray-RLlib中使用ROS封装gym环境注意事项"><a href="#Ray-RLlib中使用ROS封装gym环境注意事项" class="headerlink" title="Ray RLlib中使用ROS封装gym环境注意事项"></a>Ray RLlib中使用ROS封装gym环境注意事项</h2><p>使用Ray RLlib训练强化学习智能体非常方便，但是如果想在ROS系统下训练智能体，需要将环境封装成gym的格式，具体封装可以参考<a href="https://github.com/openai/gym/blob/master/docs/creating-environments.md" target="_blank" rel="noopener">openai/gym</a>中创建新环境的说明。<br>在将环境传给Ray RLlib的时候有几种方式，一种方式是将注册好环境的名称传给Ray <code>env</code>接口。如果是自己定义的这里一般都会报错，提示找不到这个环境。一般报错的文件是<code>ray/rllib/agents/trainer.py</code>。报错的原因是你注册的这个环境是局部的，只有在<code>import</code>对应的库才能找的到，而<code>trainer.py</code>并不知道你定义的环境在哪里。通常来讲，我们会把环境定义在当前项目目录的一个子文件夹中，可以写一个<code>setup.py</code>文件，参考<a href="https://github.com/openai/gym-soccer" target="_blank" rel="noopener">这里</a>。<br>然后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -e .</span><br></pre></td></tr></table></figure>
+
+<p>这样就把自定义环境所在的库安装在当前python的目录中，可以在<code>trainer.py</code>文件中增加一句<code>import xxx</code>。这样就可以找到定义的环境了。</p>
+<p>如果定义的环境中使用了ROS中的一些函数，尤其是涉及时间的函数，它都会要求你在调用之前对时间进行初始化。<br>正常来讲，我们都会在主函数中使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rospy.init_node(&#39;node_name&#39;)</span><br></pre></td></tr></table></figure>
+<p>来初始化节点，并且初始化了时间。由于这里是在定义gym环境时使用到了相关函数，因此如果你在该环境初始化时使用该语句是正常的。<br>例如在定义环境类的<code>__init__()</code>函数中，或者在调用<code>gym.make()</code>之前(但是不能太前，要在同一个文件中)。<br>而在使用<code>tune.run()</code>的主函数中调用这句则无效，具体原因不太情况。</p>
+<p>这里我采用的是在<code>trainer.py</code>中的<code>Trainer</code>类的初始化函数中增加了<code>rospy.init_node(&#39;node_name&#39;)</code>。目前跑200k步是没有问题，尝试在环境初始化函数中加入上述语句，执行一段时间会报错，具体原因未知。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>为了在ROS中使用Ray框架，先是编译Python3.x支持的ROS环境，然后再修改一点RLlib中的一点代码，总算是可以跑起来。但是对于Ray使用gym封装的ROS环境这部分的解决方案并不优雅（毕竟涉及修改了ray本身的一些代码），如果后续有更好的方案再来更新吧。</p>
 
     </div>
 
@@ -420,7 +450,7 @@ mjx-container[display="true"] + br {
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag"># 随笔</a>
+              <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag"># 环境配置</a>
           </div>
 
         
@@ -429,13 +459,10 @@ mjx-container[display="true"] + br {
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/07/05/my-test-draft/" rel="prev" title="my-test-draft">
-      <i class="fa fa-chevron-left"></i> my-test-draft
+    <a href="/2020/07/13/rl-pg/" rel="prev" title="策略梯度方法概要">
+      <i class="fa fa-chevron-left"></i> 策略梯度方法概要
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/07/13/rl-pg/" rel="next" title="策略梯度方法概要">
-      策略梯度方法概要 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
